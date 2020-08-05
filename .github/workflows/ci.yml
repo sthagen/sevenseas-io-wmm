@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Get submodules
-      run: git submodule init & git submodule update
+      with:
+        submodules: true
     - name: Build
       run: cargo build --verbose
     - name: Run tests
@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Install target
       run: rustup target add thumbv7m-none-eabi
-    - name: Get submodules
-      run: git submodule init & git submodule update
     - name: Build
       run: cargo build --verbose
 
@@ -32,9 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Install target
       run: rustup target add thumbv7em-none-eabihf
-    - name: Get submodules
-      run: git submodule init & git submodule update
     - name: Build
       run: cargo build --verbose
