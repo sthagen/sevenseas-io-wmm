@@ -1,0 +1,12 @@
+[package]
+name = "wmm"
+version = "0.1.0"
+authors = ["René Herrero Gómez <rene@sevenseas.io>"]
+edition = "2018"
+
+[build-dependencies]
+cc = "1.0"
+
+[dependencies]
+libc = "0.2.74"
+

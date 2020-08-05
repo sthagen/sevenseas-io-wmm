@@ -1,0 +1,3 @@
+[submodule "lib"]
+	path = lib
+	url = git@github.com:reneherrero/WMM_Tiny.git
