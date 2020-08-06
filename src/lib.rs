@@ -57,8 +57,14 @@ mod tests {
     use crate::declination;
 
     #[test]
-    fn test() {
+    fn test_texas() {
         let target = declination(20, 8, 5, 29.7363025, -93.8827939);
         assert_eq!(target, 1.34724259);
+    }
+
+    #[test]
+    fn test_san_vi() {
+        let target = declination(20, 8, 5, 43.34380925, -4.3274906);
+        assert_eq!(target, -0.532184601);
     }
 }
