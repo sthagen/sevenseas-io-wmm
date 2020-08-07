@@ -9,4 +9,10 @@ cc = "1.0"
 
 [dependencies]
 libc = "0.2.74"
-time = "0.2.16"
+time = { version = "0.2.16", default-features = false }
+
+[dev-dependencies]
+time = { version = "0.2.16", default-features = true }
+
+[[example]]
+name = "declination"
