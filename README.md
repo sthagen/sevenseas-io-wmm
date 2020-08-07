@@ -1,5 +1,7 @@
 # World Magnetic Model
 
+![build](https://img.shields.io/github/workflow/status/sevenseas-io/wmm/Continuous%20Integration)
+
 Low footprint *no_std* WMM library used to calculate the magnetic declination at sea level.
 
 It's important to note that the current model is valid from 2020 until 2025.
