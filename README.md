@@ -20,7 +20,8 @@ fn main() {
         "Today's declination for coordinates {},{} is {}°",
         lat, lon, dec
     )
-}```
+}
+```
 
 ## Credits
 

@@ -11,12 +11,40 @@ extern "C" {
 
 static mut INITIALIZED: bool = false;
 
-#[derive(Debug, PartialEq)]
+/// WMM Error
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Error {
+    /// Invalid date
+    ///
+    /// The current WMM only supports dates within the 2020 to 2025 time range
     InvalidDate,
+
+    /// Invalid coordinates
+    ///
+    /// Valid entries are:
+    /// * Latitude -90.00 to +90.00 degrees  
+    /// * Longitude -180.00 to +180.00 degrees  
     InvalidCoordinates,
 }
 
+/// Returns the magnetic declination for a given date and location
+///
+/// # Arguments
+///
+/// * `date` - Date within the 2020 to 2025 time range
+/// * `lat` - Latitude: -90.00 to +90.00 degrees
+/// * `lon` - Longitude: -180.00 to +180.00 degrees
+///
+/// # Examples
+///
+/// ```
+/// use time::OffsetDateTime;
+/// use wmm::declination;
+/// let date = OffsetDateTime::now_utc().date();
+/// let lat = 29.7363025;
+/// let lon = -93.8827939;
+/// let dec = declination(date, lat, lon).unwrap();
+/// ```
 pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
     unsafe {
         if !INITIALIZED {
@@ -26,7 +54,7 @@ pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
     }
 
     let year = date.year();
-    if year < 2020 || year > 2025 {
+    if year < 2020 || year > 2024 {
         return Err(Error::InvalidDate);
     }
 
