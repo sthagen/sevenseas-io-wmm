@@ -1,7 +1,7 @@
 [package]
 authors = ["René Herrero Gómez <rene@sevenseas.io>"]
 categories = ["no-std"]
-description = " A no_std WMM library used to calculate the magnetic declination "
+description = " WMM no_std library used to calculate the magnetic declination "
 documentation = "https://docs.rs/wmm"
 edition = "2018"
 keywords = ["magnetic"]
