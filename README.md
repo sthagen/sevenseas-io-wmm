@@ -28,9 +28,10 @@ fn main() {
 }
 ```
 
-## Minimum Supported rustc Version
+## Minimum Supported Rust Version (MSRV)
 
-This crate's minimum supported rustc version is `1.35.0`.
+This crate is guaranteed to compile on stable Rust 1.35 and up. It *might*
+compile with older versions but that may change in any new patch release.
 
 ## Credits
 
