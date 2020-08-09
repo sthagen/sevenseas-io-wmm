@@ -1,7 +1,8 @@
 # World Magnetic Model
 
 ![ci](https://github.com/sevenseas-io/wmm/workflows/ci/badge.svg)
-![crates.io](https://img.shields.io/crates/v/wmm.svg)
+![license](https://img.shields.io/badge/license-MIT%20or%20Apache--2-brightgreen)
+![version](https://img.shields.io/crates/v/wmm.svg)
 
 Low footprint *no_std* WMM library used to calculate the magnetic declination at sea level.
 
