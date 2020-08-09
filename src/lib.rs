@@ -1,6 +1,7 @@
 #![no_std]
 
 use libc::c_float;
+use spin::Mutex;
 use time::Date;
 
 extern "C" {
@@ -44,11 +45,14 @@ pub enum Error {
 /// let dec = declination(date, lat, lon).unwrap();
 /// ```
 pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
-    static mut INITIALIZED: bool = false;
-    unsafe {
-        if !INITIALIZED {
-            INITIALIZED = true;
-            wmm_init();
+    static INITIALIZED: Mutex<bool> = Mutex::new(false);
+    {
+        let mut initialized = INITIALIZED.lock();
+        if !*initialized {
+            unsafe {
+                wmm_init();
+            }
+            *initialized = true;
         }
     }
 
