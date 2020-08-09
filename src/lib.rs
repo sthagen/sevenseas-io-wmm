@@ -9,8 +9,6 @@ extern "C" {
     fn E0000(glat: c_float, glon: c_float, time_years: c_float, dec: *mut c_float);
 }
 
-static mut INITIALIZED: bool = false;
-
 /// WMM Error
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Error {
@@ -46,6 +44,7 @@ pub enum Error {
 /// let dec = declination(date, lat, lon).unwrap();
 /// ```
 pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
+    static mut INITIALIZED: bool = false;
     unsafe {
         if !INITIALIZED {
             INITIALIZED = true;

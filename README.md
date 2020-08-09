@@ -27,6 +27,10 @@ fn main() {
 }
 ```
 
+## Minimum Supported rustc Version
+
+This crate's minimum supported rustc version is `1.35.0`.
+
 ## Credits
 
 The C code this library refences originates from [WMM_Tiny](https://github.com/miniwinwm/WMM_Tiny).
