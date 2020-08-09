@@ -29,7 +29,7 @@ fn main() {
 
 ## Credits
 
-The C code this lirary refences originates from [WMM_Tiny](https://github.com/miniwinwm/WMM_Tiny).
+The C code this library refences originates from [WMM_Tiny](https://github.com/miniwinwm/WMM_Tiny).
 
 The [WMM](https://www.ngdc.noaa.gov/geomag/WMM/) is a NOAA effort which is part of the US Government.
 
