@@ -4,7 +4,7 @@
 ![license](https://img.shields.io/badge/license-MIT%20or%20Apache--2-brightgreen)
 ![version](https://img.shields.io/crates/v/wmm.svg)
 
-Low footprint *no_std* World Magnetic Model (WMM) library used to calculate the magnetic declination at sea level.
+Low footprint `#[no_std]` World Magnetic Model (WMM) library used to calculate the magnetic declination at sea level.
 
 It's important to note that the current model is valid from 2020 until 2025.
 
