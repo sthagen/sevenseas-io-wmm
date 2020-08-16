@@ -5,7 +5,7 @@
 [![version](https://img.shields.io/crates/v/wmm.svg)](https://crates.io/crates/wmm)
 [![docs](https://docs.rs/wmm/badge.svg)](https://docs.rs/wmm/)
 
-Low footprint `#[no_std]` World Magnetic Model (WMM) library used to calculate the magnetic declination at sea level.
+Low footprint `no_std` World Magnetic Model (WMM) library used to calculate the magnetic declination at sea level.
 
 It's important to note that the current model is valid from 2020 until 2025.
 
@@ -32,12 +32,6 @@ fn main() {
 
 This crate is guaranteed to compile on stable Rust 1.36 and up. It *might* compile with older versions but that may change in any new patch release.
 
-## Credits
-
-The C code this library refences originates from [WMM_Tiny](https://github.com/miniwinwm/WMM_Tiny).
-
-The [WMM](https://www.ngdc.noaa.gov/geomag/WMM/) is a NOAA effort which is part of the US Government.
-
 ## License
 
 Licensed under either of
@@ -53,3 +47,9 @@ at your option.
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
 dual licensed as above, without any additional terms or conditions.
+
+## Credits
+
+The C code this library refences originates from [WMM_Tiny](https://github.com/miniwinwm/WMM_Tiny).
+
+The [WMM](https://www.ngdc.noaa.gov/geomag/WMM/) is a NOAA effort which is part of the US Government.
