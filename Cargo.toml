@@ -16,7 +16,7 @@ exclude = ["docs"]
 cc = "1.0"
 
 [dependencies]
-libc = "0.2.74"
+libc = "0.2.76"
 spin = "0.5.2"
 time = { version = "0.2.16", default-features = false }
 
