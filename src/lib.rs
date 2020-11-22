@@ -86,9 +86,9 @@ mod tests {
     fn test_valid() -> Result<(), Error> {
         struct TestCase {
             date: Date,
-            lat: f32,
-            lon: f32,
-            dec: f32,
+            lat: f64,
+            lon: f64,
+            dec: f64,
         }
         let test_cases = [
             TestCase {
