@@ -17,11 +17,11 @@ cc = "1.0.59"
 
 [dependencies]
 libc = "0.2.76"
-spin = "0.5.2"
-time = { version = "0.2.16", default-features = false }
+spin = "0.7.1"
+time = { git = "https://github.com/time-rs/time", branch = "main", default-features = false, features = ["alloc"] }
 
 [dev-dependencies]
-time = { version = "0.2.16", default-features = true }
+time = { git = "https://github.com/time-rs/time", branch = "main", default-features = true }
 
 [[example]]
 name = "declination"

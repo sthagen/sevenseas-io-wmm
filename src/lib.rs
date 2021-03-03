@@ -80,25 +80,25 @@ pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
 mod tests {
     use crate::declination;
     use crate::Error;
-    use time::{date, Date};
+    use time::Date;
 
     #[test]
     fn test_valid() -> Result<(), Error> {
         struct TestCase {
             date: Date,
-            lat: f64,
-            lon: f64,
-            dec: f64,
+            lat: f32,
+            lon: f32,
+            dec: f32,
         }
         let test_cases = [
             TestCase {
-                date: date!(2020 - 08 - 05),
+                date: Date::from_calendar_date(2020, 08, 05).unwrap(),
                 lat: 29.7363025,
                 lon: -93.8827939,
                 dec: 1.34724259,
             },
             TestCase {
-                date: date!(2020 - 08 - 05),
+                date: Date::from_calendar_date(2020, 08, 05).unwrap(),
                 lat: 43.34380925,
                 lon: -4.3274906,
                 dec: -0.532184601,
@@ -122,12 +122,12 @@ mod tests {
         }
         let test_cases = [
             TestCase {
-                date: date!(2019 - 12 - 31),
+                date: Date::from_calendar_date(2019, 12, 31).unwrap(),
                 lat: 29.7363025,
                 lon: -93.8827939,
             },
             TestCase {
-                date: date!(2026 - 01 - 01),
+                date: Date::from_calendar_date(2026, 01, 01).unwrap(),
                 lat: 29.7363025,
                 lon: -93.8827939,
             },
@@ -149,22 +149,22 @@ mod tests {
         }
         let test_cases = [
             TestCase {
-                date: date!(2020 - 08 - 07),
+                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
                 lat: 90.00001,
                 lon: -93.8827939,
             },
             TestCase {
-                date: date!(2020 - 08 - 07),
+                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
                 lat: -90.00001,
                 lon: -93.8827939,
             },
             TestCase {
-                date: date!(2020 - 08 - 07),
+                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
                 lat: 29.7363025,
                 lon: 180.00001,
             },
             TestCase {
-                date: date!(2020 - 08 - 07),
+                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
                 lat: 29.7363025,
                 lon: -180.00001,
             },
