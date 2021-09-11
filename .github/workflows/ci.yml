@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         # All generated code should be running on stable now
-        rust: [stable]
+        rust: [stable, 1.51.0]
 
         # The default target we're compiling on and for
         target:
@@ -24,7 +24,6 @@ jobs:
           - name: thumbv7m-none-eabi
             gcc: gcc-arm-none-eabi
             install_gcc: true
-
 
     steps:
       - name: Checkout Code
