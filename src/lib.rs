@@ -1,6 +1,6 @@
 #![no_std]
 
-use libc::c_float;
+use cty::c_float;
 use spin::Mutex;
 use time::Date;
 
@@ -37,9 +37,9 @@ pub enum Error {
 /// # Examples
 ///
 /// ```
-/// use time::OffsetDateTime;
+/// use time::{Date, Month};
 /// use wmm::declination;
-/// let date = OffsetDateTime::now_utc().date();
+/// let date = Date::from_calendar_date(2021, Month::September, 1).unwrap();
 /// let lat = 29.7363025;
 /// let lon = -93.8827939;
 /// let dec = declination(date, lat, lon).unwrap();
