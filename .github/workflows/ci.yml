@@ -25,19 +25,6 @@ jobs:
             gcc: gcc-arm-none-eabi
             install_gcc: true
 
-        include:
-          # Test MSRV
-          - rust: 1.51.0
-            target:
-              - name: x86_64-unknown-linux-gnu
-                install_gcc: false
-
-          # Test nightly but don't fail
-          - rust: nightly
-            experimental: true
-            target:
-              - name: x86_64-unknown-linux-gnu
-                install_gcc: false
 
     steps:
       - name: Checkout Code
