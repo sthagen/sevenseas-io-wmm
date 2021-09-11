@@ -57,11 +57,11 @@ pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
     }
 
     let year = date.year();
-    if year < 2020 || year > 2024 {
+    if !(2020..=2024).contains(&year) {
         return Err(Error::InvalidDate);
     }
 
-    if lat > 90.0 || lat < -90.0 || lon > 180.0 || lon < -180.0 {
+    if !(-90.0..=90.0).contains(&lat) || !(-180.0..=180.0).contains(&lon) {
         return Err(Error::InvalidCoordinates);
     }
 
