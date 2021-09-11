@@ -67,7 +67,7 @@ pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
 
     let year = (year - 2000) as u8;
     unsafe {
-        let date = wmm_get_date(year, date.month(), date.day());
+        let date = wmm_get_date(year, date.month() as u8, date.day());
 
         let mut dec: c_float = 0.0;
         let dec_ptr: *mut c_float = &mut dec;
@@ -80,7 +80,7 @@ pub fn declination(date: Date, lat: f32, lon: f32) -> Result<f32, Error> {
 mod tests {
     use crate::declination;
     use crate::Error;
-    use time::Date;
+    use time::{Date, Month};
 
     #[test]
     fn test_valid() -> Result<(), Error> {
@@ -92,13 +92,13 @@ mod tests {
         }
         let test_cases = [
             TestCase {
-                date: Date::from_calendar_date(2020, 08, 05).unwrap(),
+                date: Date::from_calendar_date(2020, Month::August, 05).unwrap(),
                 lat: 29.7363025,
                 lon: -93.8827939,
                 dec: 1.34724259,
             },
             TestCase {
-                date: Date::from_calendar_date(2020, 08, 05).unwrap(),
+                date: Date::from_calendar_date(2020, Month::August, 05).unwrap(),
                 lat: 43.34380925,
                 lon: -4.3274906,
                 dec: -0.532184601,
@@ -122,12 +122,12 @@ mod tests {
         }
         let test_cases = [
             TestCase {
-                date: Date::from_calendar_date(2019, 12, 31).unwrap(),
+                date: Date::from_calendar_date(2019, Month::December, 31).unwrap(),
                 lat: 29.7363025,
                 lon: -93.8827939,
             },
             TestCase {
-                date: Date::from_calendar_date(2026, 01, 01).unwrap(),
+                date: Date::from_calendar_date(2026, Month::January, 01).unwrap(),
                 lat: 29.7363025,
                 lon: -93.8827939,
             },
@@ -149,22 +149,22 @@ mod tests {
         }
         let test_cases = [
             TestCase {
-                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
+                date: Date::from_calendar_date(2020, Month::August, 07).unwrap(),
                 lat: 90.00001,
                 lon: -93.8827939,
             },
             TestCase {
-                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
+                date: Date::from_calendar_date(2020, Month::August, 07).unwrap(),
                 lat: -90.00001,
                 lon: -93.8827939,
             },
             TestCase {
-                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
+                date: Date::from_calendar_date(2020, Month::August, 07).unwrap(),
                 lat: 29.7363025,
                 lon: 180.00001,
             },
             TestCase {
-                date: Date::from_calendar_date(2020, 08, 07).unwrap(),
+                date: Date::from_calendar_date(2020, Month::August, 07).unwrap(),
                 lat: 29.7363025,
                 lon: -180.00001,
             },
