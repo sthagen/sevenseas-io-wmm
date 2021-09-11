@@ -3,6 +3,7 @@
 [![ci](https://github.com/sevenseas-io/wmm/workflows/ci/badge.svg)](https://github.com/sevenseas-io/wmm/actions?query=workflow%3Aci)
 [![license](https://img.shields.io/badge/license-MIT%20or%20Apache--2-brightgreen)](https://github.com/sevenseas-io/wmm#license)
 [![version](https://img.shields.io/crates/v/wmm.svg)](https://crates.io/crates/wmm)
+[![minimum rustc: 1.51](https://img.shields.io/badge/minimum%20rustc-1.51-yellowgreen?logo=rust)](https://www.whatrustisit.com)
 [![docs](https://docs.rs/wmm/badge.svg)](https://docs.rs/wmm/)
 
 Low footprint `no_std` World Magnetic Model (WMM) library used to calculate the magnetic declination at sea level.

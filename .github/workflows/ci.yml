@@ -6,13 +6,24 @@ jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         # All generated code should be running on stable now
         rust: [stable]
 
         # The default target we're compiling on and for
-        TARGET: [x86_64-unknown-linux-gnu, arm-unknown-linux-gnueabihf, thumbv7m-none-eabi]
+        target:
+          - name: x86_64-unknown-linux-gnu
+            install_gcc: false
+
+          - name: arm-unknown-linux-gnueabihf
+            gcc: gcc-arm-linux-gnueabihf
+            install_gcc: true
+
+          - name: thumbv7m-none-eabi
+            gcc: gcc-arm-none-eabi
+            install_gcc: true
 
         include:
           # Test MSRV
@@ -22,32 +33,49 @@ jobs:
           # Test nightly but don't fail
           - rust: nightly
             experimental: true
-            TARGET: x86_64-unknown-linux-gnu
+            target:
+              - name: x86_64-unknown-linux-gnu
+                install_gcc: false
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: ${{ matrix.rust }}
           target: ${{ matrix.TARGET }}
           override: true
-      - uses: actions-rs/cargo@v1
+
+      - name: Install gcc
+        run: apt-get install -y --no-install-recommends ${{ matrix.target.gcc }}
+        if: matrix.target.install_gcc == true
+
+      - name: Run Check on ${{ matrix.target.name }} with Rust ${{ matrix.rust }}
+        uses: actions-rs/cargo@v1
         with:
           command: check
-          args: --target=${{ matrix.TARGET }}
+          args: --target=${{ matrix.target.name }}
 
   test:
     name: Test
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
           override: true
-      - uses: actions-rs/cargo@v1
+
+      - name: Test all targets
+        uses: actions-rs/cargo@v1
         with:
           command: test
           args: --all-targets
@@ -55,15 +83,23 @@ jobs:
   fmt:
     name: Formatting
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+       with:
           profile: minimal
           toolchain: stable
           override: true
-      - run: rustup component add rustfmt
-      - uses: actions-rs/cargo@v1
+
+      - name: Install rustfmt
+        run: rustup component add rustfmt
+
+      - name: Run rustfmt
+        uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: --all -- --check
@@ -71,15 +107,23 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
           override: true
-      - run: rustup component add clippy
-      - uses: actions-rs/cargo@v1
+
+      - name: Install clippy
+        run: rustup component add clippy
+
+      - name: Run clippy
+        uses: actions-rs/cargo@v1
         with:
           command: clippy
           args: -- -D warnings
