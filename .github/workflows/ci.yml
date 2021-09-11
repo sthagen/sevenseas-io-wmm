@@ -46,7 +46,7 @@ jobs:
         with:
           profile: minimal
           toolchain: ${{ matrix.rust }}
-          target: ${{ matrix.TARGET }}
+          target: ${{ matrix.target.name }}
           override: true
 
       - name: Install gcc
