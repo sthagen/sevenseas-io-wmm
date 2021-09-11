@@ -26,7 +26,6 @@ jobs:
             install_gcc: true
 
 
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -40,7 +39,7 @@ jobs:
           override: true
 
       - name: Install gcc
-        run: sudo apt-get install -y --no-install-recommends ${{ matrix.target.gcc }} libnewlib-arm-none-eabi
+        run: sudo apt-get install -y ${{ matrix.target.gcc }}
         if: matrix.target.install_gcc == true
 
       - name: Run Check on ${{ matrix.target.name }} with Rust ${{ matrix.rust }}
