@@ -6,8 +6,8 @@ on:
 name: publish
 
 jobs:
-  check:
-    name: Check
+  publish:
+    name: Publish
     runs-on: ubuntu-latest
 
     steps:
