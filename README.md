@@ -31,7 +31,7 @@ fn main() {
 
 ## Minimum Supported Rust Version (MSRV)
 
-This crate is guaranteed to compile on stable Rust 1.56 and up.
+This crate is guaranteed to compile on stable Rust 1.59 and up.
 
 ## License
 
