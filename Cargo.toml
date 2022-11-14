@@ -9,16 +9,15 @@ license = "MIT OR Apache-2.0"
 name = "wmm"
 readme = "README.md"
 repository = "https://github.com/sevenseas-io/wmm"
-version = "0.2.1"
-exclude = ["docs"]
+version = "0.2.2"
 
 [build-dependencies]
-cc = "1.0.73"
+cc = "1.0"
 
 [dependencies]
-cty = "0.2.2"
-spin = "0.9.4"
-time = { version = "0.3.16", default-features = false }
+cty = "0.2"
+spin = "0.9"
+time = { version = "0.3", default-features = false }
 
 [[example]]
 name = "declination"

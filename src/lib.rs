@@ -11,7 +11,7 @@ extern "C" {
 }
 
 /// WMM Error
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Error {
     /// Invalid date
     ///
