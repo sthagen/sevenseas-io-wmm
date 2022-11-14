@@ -5,9 +5,9 @@ description = " WMM no_std library used to calculate the magnetic declination "
 documentation = "https://docs.rs/wmm"
 edition = "2021"
 keywords = ["magnetic"]
-license = "MIT OR Apache-2.0"
 name = "wmm"
 readme = "README.md"
+license = "MIT OR Apache-2.0"
 repository = "https://github.com/sevenseas-io/wmm"
 version = "0.2.3"
 
